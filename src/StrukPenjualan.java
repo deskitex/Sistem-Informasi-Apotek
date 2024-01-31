@@ -7,8 +7,8 @@
 
 public class StrukPenjualan extends SistemInformasiApotek {
    //Inheritance
-   public StrukPenjualan(String namaApotek) {
-      super(namaApotek);
+   public StrukPenjualan(String namaApotek, String alamatApotek) {
+      super(namaApotek, alamatApotek);
    }
    private int idNota;
 
@@ -21,9 +21,7 @@ public class StrukPenjualan extends SistemInformasiApotek {
    public int getIdNota(){
       return idNota;
    }
-   public void cetakStrukPenjualan(){
-            sistemInformasiApotek.getnamaApotek();
-   }
+  
    public void apotekerLogin(){
       super.apotekerLogin();
    }
@@ -32,5 +30,17 @@ public class StrukPenjualan extends SistemInformasiApotek {
    }
    public void sistemPesanan(){
       super.sistemPesanan();
+   }
+   public void cetakStrukPenjualan(){
+      System.out.println("\t\t\t" + namaApotek);
+      System.out.println("\t" + alamatApotek);
+      System.out.println("==============================================================");
+      System.out.println("\tApoteker: " + getNamaApoteker + "\t\tId Apoteker: " + getIdApoteker);
+      System.out.println("==============================================================");
+      Konsumen.tampilBeliObat();
+      System.out.println("==============================================================");
+      System.out.println("\tMember: \t" + namaKonsumen +  "\t\tTotal: " + getTotalHarga());
+      System.out.println("\tId Member:\t" + idMember + "\t\tTunai: "+ Konsumen.getUang());
+      System.out.println("\t\t\t\t\tKembali: " + getKembalian());
    }
 }

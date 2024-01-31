@@ -12,7 +12,8 @@ public class Konsumen {
    private int jumlah[];
    private int j;
    private MemberApotek memberApotek;
-   private int totalHarga;
+   private int totalHarga[];
+   private int totallyTotalHarga;
    public SistemInformasiApotek sistemInformasiApotek;
    
    public Konsumen(String nama, MemberApotek memberApotek) {
@@ -20,6 +21,7 @@ public class Konsumen {
       this.memberApotek = memberApotek;
       obat = new Obat[99];
       jumlah = new int[99];
+      totalHarga = new int[99];
       j = 1;
    }
    public void setUang(int newUang) {
@@ -31,12 +33,7 @@ public class Konsumen {
    public int getUang() {
       return uang;
    }
-   public void setTotalHarga(int totalHarga){
-      this.totalHarga = totalHarga;
-   }
-   public int getTotalHarga(){
-      return totalHarga;
-   }
+   
    public void beliObat(Obat obat, int jumlah){
       this.obat[j] = obat;
       this.jumlah[j] = jumlah;
@@ -45,12 +42,16 @@ public class Konsumen {
    
    public void tampilBeliObat(){
       for (int i = 1; i < j; i++){
-         System.out.print(i +". ");
+         System.out.print("\t" + i +". ");
          obat[i].cetakJenisObat();
-         setTotalHarga(obat[i].getHarga() * jumlah[i]);
-         System.out.println("\tjumlah: " + jumlah[i] + "\tHarga: " + getTotalHarga());
+         totalHarga[i] = (obat[i].getHarga() * jumlah[i]);
+         System.out.println("\tjumlah: " + jumlah[i] + "\tHarga: " + totalHarga[i]);
       }
    }
+   public int totallyTotalHarga(){
+      for (int i = 1; i < j; i++){
+         totallyTotalHarga += totalHarga[i];
+   } return totallyTotalHarga;}
 
    public void setNama(String nama){
       this.nama = nama;

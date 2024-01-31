@@ -10,6 +10,7 @@ public class SistemInformasiApotek  {
    public Konsumen Konsumen;
 
    public String namaApotek;
+   public String alamatApotek;
    private int jumlahBeli;
    private int Kembalian;
    private int totalHarga;
@@ -17,10 +18,10 @@ public class SistemInformasiApotek  {
 
    String getNamaApoteker ;
    String getIdApoteker ;
-   String idMember;
-   String namaKonsumen;
+   String idMember = " ";
+   String namaKonsumen = " ";
 
-   Apoteker Susanti;
+   Apoteker Susan;
    Apoteker Budi;
    Apoteker Dewi;
    //Composition
@@ -29,9 +30,10 @@ public class SistemInformasiApotek  {
    Obat Pilek;
    //public Konsumen konsumen;
 
-   public SistemInformasiApotek(String namaApotek){
+   public SistemInformasiApotek(String namaApotek, String alamatApotek){
       this.namaApotek = namaApotek;
-      Susanti = new Apoteker("Susanti", "1111");
+      this.alamatApotek = alamatApotek;
+      Susan = new Apoteker("Susan", "1111");
       Budi = new Apoteker("Budi", "2222");
       Dewi = new Apoteker("Dewi", "3333");
 
@@ -89,8 +91,8 @@ public class SistemInformasiApotek  {
               getIdApoteker = Budi.getIdApotek();
               break;
           case "susanti":
-              getNamaApoteker = Susanti.getNama();
-              getIdApoteker = Susanti.getIdApotek();
+              getNamaApoteker = Susan.getNama();
+              getIdApoteker = Susan.getIdApotek();
           case "dewi":
               getNamaApoteker = Dewi.getNama();
               getIdApoteker = Dewi.getIdApotek();
@@ -130,7 +132,7 @@ public class SistemInformasiApotek  {
                   break;
               default:
                    System.out.println("Tidak ada member dengan id "+idMember);
-                   idMember = null;
+                   idMember = " ";
                    loop = true;
                    break;
               }
@@ -191,18 +193,15 @@ public class SistemInformasiApotek  {
                     break;
                 } //Switch
             } //While
-            setTotalHarga(Konsumen.getTotalHarga());
+            setTotalHarga(Konsumen.totallyTotalHarga());
             System.out.println("\nTotal Harga: " + getTotalHarga() + "\n");
             System.out.println("Masukkan uang: ");
             Konsumen.setUang(input.nextInt());
-            setKembalian(Konsumen.getTotalHarga() - Konsumen.getUang());
-            if (Konsumen.getUang() < Konsumen.getTotalHarga()){
+            setKembalian(Konsumen.getUang() - getTotalHarga() );
+            if (Konsumen.getUang() < getTotalHarga()){
                System.out.println("Pembelian Dibatalkan");
             } else{
-            System.out.println("Total Kembalian: " + getKembalian());}
-         
-   }
-   public void cetakStrukPenjualan(){
-      Konsumen.tampilBeliObat();
+            System.out.println("Total Kembalian: " + getKembalian());
+            }         
    }
 }
