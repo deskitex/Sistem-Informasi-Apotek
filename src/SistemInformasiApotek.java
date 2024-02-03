@@ -3,8 +3,7 @@
  * Author:  Reynold
  * Purpose: Defines the Class SistemInformasiApotek
  ***********************************************************************/
-
-import java.util.*;
+import javax.swing.JOptionPane;
 public class SistemInformasiApotek  {
    
    public Konsumen Konsumen;
@@ -49,7 +48,7 @@ public class SistemInformasiApotek  {
    }
    public void setJumlahBeli(int jumlahBeli){
       if (jumlahBeli <= 0){
-         System.out.println("\nTidak Boleh dibawah 0\n");
+         JOptionPane.showMessageDialog(null, "\nTidak Boleh dibawah 0\n");
       } else{
       this.jumlahBeli = jumlahBeli;}
    }
@@ -80,11 +79,9 @@ public class SistemInformasiApotek  {
    }
 
 
-   Scanner input = new Scanner(System.in);
-
    public void apotekerLogin(){
-      System.out.println("Apoteker Login: ");
-      String Apoteker = input.nextLine().toLowerCase();
+      String Apoteker = JOptionPane.showInputDialog("Apoteker Login").toLowerCase();
+
 
       switch (Apoteker) {
           case "budi":
@@ -98,18 +95,16 @@ public class SistemInformasiApotek  {
               getNamaApoteker = Dewi.getNama();
               getIdApoteker = Dewi.getIdApotek();
           default:
-          System.out.println("Tidak ada nama Apoteker " + Apoteker);
+          JOptionPane.showMessageDialog(null, "Tidak ada nama apoteker "+ Apoteker);
               break;
        }
    }
    public void memberApotek(){
       Boolean loop = true;
       while (loop == true){
-      System.out.println("Apakah ada member [Y/N]? ");
-      String pilih = input.nextLine().toLowerCase();
+      String pilih = JOptionPane.showInputDialog("Apakah ada member [Y/N]?").toLowerCase();
        if (pilih.equals("y")){
-          System.out.println("Masukkan ID Member: ");
-          idMember = input.nextLine();
+          idMember = JOptionPane.showInputDialog("Masukkan ID Member: ").toLowerCase();
           switch (idMember) {
               case "2020":
                   namaKonsumen = "Reynold";
@@ -132,8 +127,8 @@ public class SistemInformasiApotek  {
                   loop = false;
                   break;
               default:
-                   System.out.println("Tidak ada member dengan id "+idMember);
-                   idMember = " ";
+                   JOptionPane.showMessageDialog(null, "Tidak ada member dengan id "+ idMember);
+                   idMember = "";
                    loop = true;
                    break;
               }
@@ -141,11 +136,10 @@ public class SistemInformasiApotek  {
          }
    }
    public void listObat(){
-      System.out.println("\nNama Obat\t\tStok Obat\t\tHarga");
-      System.out.println("1. " + Batuk.getJenisObat() + "\t\tStok Obat: " + Batuk.getStokObat() + "\t\tHarga: " + Batuk.getHarga());
-      System.out.println("2. " + Pusing.getJenisObat() + "\t\tStok Obat: " + Pusing.getStokObat() + "\t\tHarga: " + Pusing.getHarga());
-      System.out.println("3. " + Pilek.getJenisObat() + "\t\tStok Obat: " + Pilek.getStokObat() + "\t\tHarga: " + Pilek.getHarga());
-      System.out.println();
+      JOptionPane.showMessageDialog(null, "\nNama Obat\t\t  Stok Obat\t\t  Harga\n1. "
+       + Batuk.getJenisObat() + "\t\t  Stok Obat: " + Batuk.getStokObat() + "\t\t   Harga: " + Batuk.getHarga() + "\n2. "
+       + Pusing.getJenisObat() + "\t\t  Stok Obat: " + Pusing.getStokObat() + "\t\t Harga: " + Pusing.getHarga() + "\n3. "
+       + Pilek.getJenisObat() + "\t\t  Stok Obat: " + Pilek.getStokObat() + "\t\t   Harga: " + Pilek.getHarga() + "\n");
    }
    public void sistemPesanan(){
         //Agregation
@@ -157,30 +151,24 @@ public class SistemInformasiApotek  {
       //   Obat Pilek = sistemInformasiApotek.Pilek;
         boolean loop = true;
         while (loop == true){
+        
             Konsumen.tampilBeliObat();
-            System.out.println("Masukkan Pesanan [Y: List Item  N: Done]: ");
-            String beliObat = input.nextLine().toLowerCase();
-            switch (beliObat) {
+            String beliObat = JOptionPane.showInputDialog("Masukkan Pesanan [Y: List Item  N: Done]: ").toLowerCase();
+            switch (beliObat) {                
                case "batuk":
                    //Enkapsulasi
-                    System.out.println("Beli Berapa: ");
-                    setJumlahBeli(input.nextInt());
+                    setJumlahBeli(Integer.parseInt(JOptionPane.showInputDialog("Beli Berapa: ")));
                     Konsumen.beliObat(Batuk, getJumlahBeli());
-                    input.nextLine();
                     break; 
                case "pusing":
                    //Enkapsulasi
-                    System.out.println("Beli Berapa: ");
-                    setJumlahBeli(input.nextInt());
+                   setJumlahBeli(Integer.parseInt(JOptionPane.showInputDialog("Beli Berapa: ")));
                     Konsumen.beliObat(Pusing, getJumlahBeli());
-                    input.nextLine();
                     break;
                case "pilek":
                    //Enkapsulasi
-                    System.out.println("Beli Berapa: ");
-                    setJumlahBeli(input.nextInt());
+                   setJumlahBeli(Integer.parseInt(JOptionPane.showInputDialog("Beli Berapa: ")));
                     Konsumen.beliObat(Pilek, getJumlahBeli());
-                    input.nextLine();
                    break;
                case "n":
                     loop = false;
@@ -189,16 +177,17 @@ public class SistemInformasiApotek  {
                listObat();
                    break;
                default:
-                    System.out.println("\nTidak ada obat dengan nama "+beliObat + "\n");
+                    JOptionPane.showMessageDialog(null, "\nTidak ada obat dengan nama "+beliObat + "\n");
                     beliObat = null;
                     break;
                 } //Switch
             } //While
             setTotalHarga(Konsumen.totallyTotalHarga());
-            System.out.println("\nTotal Harga: " + getTotalHarga() + "\n");
-            System.out.println("Masukkan uang: ");
-            Konsumen.setUang(input.nextInt());
-            setKembalian(Konsumen.getUang() - getTotalHarga() );
+
+            Konsumen.setUang(Integer.parseInt(JOptionPane.showInputDialog("\n" + 
+                  "Total Harga: " + getTotalHarga() + "\n" + 
+                  "Masukkan uang: ")));
+            setKembalian(Konsumen.getUang() - getTotalHarga());
                 
    }
 }

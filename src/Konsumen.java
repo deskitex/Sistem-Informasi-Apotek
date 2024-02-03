@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 /***********************************************************************
  * Module:  Konsumen.java
  * Author:  Reynold
@@ -29,7 +31,7 @@ public class Konsumen {
    }
    public void setUang(int newUang) {
       if (newUang < 0){
-         System.out.println("Uang tidak boleh dibawah 0");
+         JOptionPane.showMessageDialog(null, "Uang tidak boleh dibawah 0");
       } else{
       uang = newUang;}
    }
@@ -43,6 +45,14 @@ public class Konsumen {
       j++;
    }
    
+   // public String tampilBeliObats(){
+   //    for (int i = 1; i < j; i++){
+   //       totalHarga[i] = (obat[i].getHarga() * jumlah[i]);
+
+   //       return "\t" + i +". " + obat[i].getJenisObat() + "\tjumlah: " + jumlah[i] + "\tHarga: " + totalHarga[i];
+   //    }
+   // }
+
    public void tampilBeliObat(){
       for (int i = 1; i < j; i++){
          System.out.print("\t" + i +". ");

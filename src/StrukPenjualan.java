@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 /***********************************************************************
  * Module:  StrukPenjualan.java
  * Author:  Reynold
@@ -33,8 +35,7 @@ public class StrukPenjualan extends SistemInformasiApotek {
    }
    public void cetakStrukPenjualan(){
       if (Konsumen.getUang() < getTotalHarga()){
-         System.out.println("Pembelian Dibatalkan");
-         
+         JOptionPane.showMessageDialog(null, "Uang Tidak Cukup\nPembelian Dibatalkan");
       } else{
       System.out.println("Total Kembalian: " + getKembalian());  
       System.out.println("\t\t\t" + namaApotek);
