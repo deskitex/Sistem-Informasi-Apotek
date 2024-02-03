@@ -8,6 +8,7 @@ import java.util.*;
 public class SistemInformasiApotek  {
    
    public Konsumen Konsumen;
+   public StrukPenjualan struk;
 
    public String namaApotek;
    public String alamatApotek;
@@ -198,10 +199,6 @@ public class SistemInformasiApotek  {
             System.out.println("Masukkan uang: ");
             Konsumen.setUang(input.nextInt());
             setKembalian(Konsumen.getUang() - getTotalHarga() );
-            if (Konsumen.getUang() < getTotalHarga()){
-               System.out.println("Pembelian Dibatalkan");
-            } else{
-            System.out.println("Total Kembalian: " + getKembalian());
-            }         
+                
    }
 }

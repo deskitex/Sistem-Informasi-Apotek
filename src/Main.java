@@ -1,12 +1,10 @@
 
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         //SistemInformasiApotek sistemInformasiApotek = new SistemInformasiApotek("Farmasi");
         StrukPenjualan struk = new StrukPenjualan("Farmasi Unitomo", "Jl. Semolowaru No. 84 Menur Pumpungan, \n\tKec. Sukolilo, Surabaya, Jawa Timur 60118");
 
-        try (Scanner input = new Scanner(System.in)) {
             struk.apotekerLogin();
 
             String namaApoteker = struk.getNamaApoteker;
@@ -18,6 +16,5 @@ public class Main {
             struk.cetakStrukPenjualan();
 
             } // If Apoteker
-         } //Scanner
     }
 }

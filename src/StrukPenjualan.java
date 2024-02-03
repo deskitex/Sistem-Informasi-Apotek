@@ -32,6 +32,11 @@ public class StrukPenjualan extends SistemInformasiApotek {
       super.sistemPesanan();
    }
    public void cetakStrukPenjualan(){
+      if (Konsumen.getUang() < getTotalHarga()){
+         System.out.println("Pembelian Dibatalkan");
+         
+      } else{
+      System.out.println("Total Kembalian: " + getKembalian());  
       System.out.println("\t\t\t" + namaApotek);
       System.out.println("\t" + alamatApotek);
       System.out.println("==============================================================");
@@ -41,6 +46,6 @@ public class StrukPenjualan extends SistemInformasiApotek {
       System.out.println("==============================================================");
       System.out.println("\tMember: \t" + namaKonsumen +  "\t\tTotal: " + getTotalHarga());
       System.out.println("\tId Member:\t" + idMember + "\t\tTunai: "+ Konsumen.getUang());
-      System.out.println("\t\t\t\t\tKembali: " + getKembalian());
+      System.out.println("\t\t\t\t\tKembali: " + getKembalian());}
    }
 }

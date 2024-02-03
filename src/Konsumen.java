@@ -6,6 +6,9 @@
 
 
 public class Konsumen {
+   //Asosiasi 2 arah
+   public StrukPenjualan struk;
+
    private int uang;
    private String nama;
    private Obat obat[];
