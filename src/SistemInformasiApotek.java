@@ -18,8 +18,8 @@ public class SistemInformasiApotek  {
 
    String getNamaApoteker ;
    String getIdApoteker ;
-   String idMember = " ";
-   String namaKonsumen = " ";
+   String idMember = "";
+   String namaKonsumen = "";
 
    Apoteker Susan;
    Apoteker Budi;
@@ -153,6 +153,7 @@ public class SistemInformasiApotek  {
         while (loop == true){
         
             Konsumen.tampilBeliObat();
+            System.out.println();
             String beliObat = JOptionPane.showInputDialog("Masukkan Pesanan [Y: List Item  N: Done]: ").toLowerCase();
             switch (beliObat) {                
                case "batuk":
@@ -184,10 +185,16 @@ public class SistemInformasiApotek  {
             } //While
             setTotalHarga(Konsumen.totallyTotalHarga());
 
+            if (getTotalHarga() > 0){
             Konsumen.setUang(Integer.parseInt(JOptionPane.showInputDialog("\n" + 
                   "Total Harga: " + getTotalHarga() + "\n" + 
                   "Masukkan uang: ")));
             setKembalian(Konsumen.getUang() - getTotalHarga());
-                
+            } else{
+            JOptionPane.showMessageDialog(null, "Tidak ada pesanan\nPembelian Dibatalkan");
+            }
+   }
+   public int getIdNota(){
+    return struk.getIdNota();
    }
 }

@@ -9,7 +9,6 @@ public class Apoteker {
    private String nama;
    private String idApotek;
    
-
    public Apoteker(String nama, String idAPotek){
       this.nama = nama;
       this.idApotek = idAPotek;

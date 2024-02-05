@@ -38,7 +38,6 @@ public class Konsumen {
    public int getUang() {
       return uang;
    }
-   
    public void beliObat(Obat obat, int jumlah){
       this.obat[j] = obat;
       this.jumlah[j] = jumlah;
