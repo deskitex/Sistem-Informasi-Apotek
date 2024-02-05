@@ -5,9 +5,6 @@
  ***********************************************************************/
 import javax.swing.JOptionPane;
 public class SistemInformasiApotek  {
-   
-   public Konsumen Konsumen;
-   public StrukPenjualan struk;
 
    public String namaApotek;
    public String alamatApotek;
@@ -15,11 +12,8 @@ public class SistemInformasiApotek  {
    private int Kembalian;
    private int totalHarga;
    private int Uang;
-
-   String getNamaApoteker ;
-   String getIdApoteker ;
-   String idMember = "";
-   String namaKonsumen = "";
+   public Konsumen Konsumen;
+   public StrukPenjualan struk;
 
    Apoteker Susan;
    Apoteker Budi;
@@ -29,6 +23,10 @@ public class SistemInformasiApotek  {
    Obat Pusing;
    Obat Pilek;
    //public Konsumen konsumen;
+   String getNamaApoteker ;
+   String getIdApoteker ;
+   String idMember = "";
+   String namaKonsumen = "";
 
    public SistemInformasiApotek(String namaApotek, String alamatApotek){
       this.namaApotek = namaApotek;
@@ -41,7 +39,6 @@ public class SistemInformasiApotek  {
        Pusing = new Obat("Pusing", 10, 4500);
        Pilek = new Obat("Pilek", 7, 5000);
    }
-
 
    public String getnamaApotek(){
       return namaApotek;
@@ -146,21 +143,18 @@ public class SistemInformasiApotek  {
         MemberApotek m = new MemberApotek(idMember);
         //Asosiation 1 arah
         Konsumen = new Konsumen(namaKonsumen, m);
-      //   Obat Batuk = sistemInformasiApotek.Batuk;
-      //   Obat Pusing = sistemInformasiApotek.Pusing;
-      //   Obat Pilek = sistemInformasiApotek.Pilek;
         boolean loop = true;
         while (loop == true){
-        
+
             Konsumen.tampilBeliObat();
             System.out.println();
             String beliObat = JOptionPane.showInputDialog("Masukkan Pesanan [Y: List Item  N: Done]: ").toLowerCase();
-            switch (beliObat) {                
+            switch (beliObat) {
                case "batuk":
                    //Enkapsulasi
                     setJumlahBeli(Integer.parseInt(JOptionPane.showInputDialog("Beli Berapa: ")));
                     Konsumen.beliObat(Batuk, getJumlahBeli());
-                    break; 
+                    break;
                case "pusing":
                    //Enkapsulasi
                    setJumlahBeli(Integer.parseInt(JOptionPane.showInputDialog("Beli Berapa: ")));
@@ -186,8 +180,8 @@ public class SistemInformasiApotek  {
             setTotalHarga(Konsumen.totallyTotalHarga());
 
             if (getTotalHarga() > 0){
-            Konsumen.setUang(Integer.parseInt(JOptionPane.showInputDialog("\n" + 
-                  "Total Harga: " + getTotalHarga() + "\n" + 
+            Konsumen.setUang(Integer.parseInt(JOptionPane.showInputDialog("\n" +
+                  "Total Harga: " + getTotalHarga() + "\n" +
                   "Masukkan uang: ")));
             setKembalian(Konsumen.getUang() - getTotalHarga());
             } else{
@@ -197,4 +191,7 @@ public class SistemInformasiApotek  {
    public int getIdNota(){
     return struk.getIdNota();
    }
+//    public void cetakUlang(){
+//     struk.cetakStrukPenjualan(struk.setIdNota());
+//    }
 }

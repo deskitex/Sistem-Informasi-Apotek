@@ -6,7 +6,10 @@ import javax.swing.JOptionPane;
  * Module:  StrukPenjualan.java
  * Author:  Reynold
  * Purpose: Defines the Class StrukPenjualan
- ***********************************************************************/
+ ************************
+ 
+ 
+ ***********************************************/
 
 
 public class StrukPenjualan extends SistemInformasiApotek {
@@ -20,7 +23,9 @@ public class StrukPenjualan extends SistemInformasiApotek {
 
    //Asosiasi 2 Arah
    SistemInformasiApotek sistemInformasiApotek;
-
+   public void setIdNota(int idNota){
+      this.idNota = idNota;
+   }
    public int getIdNota(){
       return idNota;
    }
@@ -41,7 +46,7 @@ public class StrukPenjualan extends SistemInformasiApotek {
          Konsumen.tampilBeliObat();
          System.out.println("===========================================================");
          System.out.println("\tId Nota: " + getIdNota() +  "\t\t\tTotal: " + getTotalHarga());
-         System.out.println("\tNama Member: " + namaKonsumen + "\t\t\tTunai: "+ Konsumen.getUang());
+         System.out.println("\tNama Member: " + namaKonsumen + "\t\tTunai: "+ Konsumen.getUang());
          System.out.println("\tId Member:" + idMember + "\t\t\tKembali: " + getKembalian());
          i++;
          while(loopCetakUlang == true){

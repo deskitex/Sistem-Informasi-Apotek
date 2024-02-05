@@ -15,12 +15,12 @@ public class Konsumen {
    private String nama;
    private Obat obat[];
    private int jumlah[];
-   private int j;
    private MemberApotek memberApotek;
+   
+   private int j;
    private int totalHarga[];
    private int totallyTotalHarga;
-   public SistemInformasiApotek sistemInformasiApotek;
-   
+
    public Konsumen(String nama, MemberApotek memberApotek) {
       this.nama = nama;
       this.memberApotek = memberApotek;
